@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import { Item } from '../types';
-import { CheckCircleIcon, WarningIcon } from './icons';
+import Icon from '../../../common/icons/Icon';
 import DailyInput from './NumberStepper';
 
 interface TableRowProps {
