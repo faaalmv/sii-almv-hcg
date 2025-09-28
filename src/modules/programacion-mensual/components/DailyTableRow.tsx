@@ -1,7 +1,7 @@
 
 import React, { useMemo } from 'react';
 import { Item, Day, Meal } from '../types';
-import { NumberStepper } from './NumberStepper';
+import NumberStepper from './NumberStepper';
 
 interface DailyTableRowProps {
     item: Item;
