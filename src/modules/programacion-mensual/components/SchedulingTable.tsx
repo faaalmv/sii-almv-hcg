@@ -1,7 +1,7 @@
 import React, { memo, useMemo, useState, useRef } from 'react';
 import { Group, Item } from '../types';
 import { TableRow } from './TableRow';
-import { ChevronDownIcon } from './icons';
+import Icon from '../../../common/icons/Icon';
 
 interface SchedulingTableProps {
   data: Group[];
@@ -122,7 +122,7 @@ const GroupHeader: React.FC<GroupHeaderProps> = memo(({ name, items, isExpanded,
       <td colSpan={37} className="p-0">
         <div className="flex items-center justify-between w-full p-3">
           <div className="flex items-center gap-4">
-            <ChevronDownIcon className={`h-6 w-6 text-current opacity-80 transform transition-transform duration-300 ease-out ${isExpanded ? 'rotate-0' : '-rotate-90'}`} />
+            <Icon.ChevronDown className={`h-6 w-6 text-current opacity-80 transform transition-transform duration-300 ease-out ${isExpanded ? 'rotate-0' : '-rotate-90'}`} />
             <div className="flex flex-col text-left">
               <span className="font-bold text-sm uppercase tracking-wider">{name}</span>
               <span className="text-xs text-current opacity-70 font-normal">{summary.itemCount} artículos</span>

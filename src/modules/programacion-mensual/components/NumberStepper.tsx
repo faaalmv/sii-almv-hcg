@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StepperDownIcon, StepperUpIcon } from './icons';
+import Icon from '../../../common/icons/Icon';
 
 interface DailyInputProps {
   value: number; // The original value from parent state
@@ -87,7 +87,7 @@ const DailyInput: React.FC<DailyInputProps> = ({ value, onChange, disabled, avai
           aria-label="Increment value"
           tabIndex={-1}
         >
-          <StepperUpIcon className="h-3 w-3" />
+          <Icon.StepperUp className="h-3 w-3" />
         </button>
         <button 
           onClick={() => handleStep(-1)} 
@@ -96,7 +96,7 @@ const DailyInput: React.FC<DailyInputProps> = ({ value, onChange, disabled, avai
           aria-label="Decrement value"
           tabIndex={-1}
         >
-          <StepperDownIcon className="h-3 w-3" />
+          <Icon.StepperDown className="h-3 w-3" />
         </button>
       </div>
     </div>

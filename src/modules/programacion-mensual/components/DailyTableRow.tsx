@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import { Item, Meal } from '../types';
-import { CheckCircleIcon, WarningIcon } from './icons';
+import Icon from '../../../common/icons/Icon';
 import DailyInput from './NumberStepper';
 
 interface DailyTableRowProps {
@@ -104,7 +104,7 @@ export const DailyTableRow: React.FC<DailyTableRowProps> = ({ item, onValueChang
         <div className="flex justify-center items-center">
           <div className={`h-7 w-7 rounded-full flex items-center justify-center transition-all duration-300 ${exceedsMax ? 'bg-rose-500/20' : (total > 0 ? 'bg-emerald-500/20' : '')}`}>
             {exceedsMax ? (
-              <WarningIcon className="h-5 w-5 text-rose-600" />
+              <Icon.Warning className="h-5 w-5 text-rose-600" />
             ) : (
               total > 0 && <CheckCircleIcon className="h-5 w-5 text-emerald-600" />
             )}
