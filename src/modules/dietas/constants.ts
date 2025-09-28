@@ -1,5 +1,5 @@
 
-import { Patient, Diet, Meal, KitchenProduction, ComplianceLog, ComplianceStatus } from './types';
+import { type Patient, type Diet, type Meal, type KitchenProduction, type ComplianceLog, ComplianceStatus } from './types';
 
 export const DIETS: Diet[] = [
   { id: 'basal', name: 'Dieta Basal', description: 'Dieta normal sin restricciones.', allergens: [], medicationConflicts: [] },
