@@ -13,7 +13,7 @@ const PanelRechazado: React.FC<{ factura: Factura }> = ({ factura }) => {
   return (
     <div className="bg-red-50 border-l-4 border-red-500 text-red-800 p-4 rounded-r-lg" role="alert">
       <div className="flex items-start">
-        <XCircleIcon className="w-6 h-6 mr-3 flex-shrink-0" />
+        <Icon.XCircle className="w-6 h-6 mr-3 flex-shrink-0" />
         <div>
           <h4 className="font-bold text-lg">Acción Requerida</h4>
           <p className="text-md mt-1">

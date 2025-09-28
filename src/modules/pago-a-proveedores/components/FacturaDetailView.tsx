@@ -102,7 +102,7 @@ export const FacturaDetailView: React.FC<FacturaDetailViewProps> = ({
                <li className="flex space-x-3">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 rounded-full flex items-center justify-center bg-blue-500 animate-pulse">
-                      <Icon.Clock className="w-5 h-5 text-white" />
+                      <ClockIcon className="w-5 h-5 text-white" />
                     </div>
                   </div>
                   <div>
