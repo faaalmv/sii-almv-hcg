@@ -16,7 +16,7 @@ const Toast: React.FC<ToastProps> = ({ message, onClose }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [onClose]);
+  }, []);
 
   return (
     <div className="fixed top-5 right-5 z-50">
