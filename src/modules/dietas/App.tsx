@@ -1,6 +1,6 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
-import { Patient, Diet, KitchenProduction } from './types';
+import type { Patient, Diet, KitchenProduction } from './types';
 import { PATIENTS, DIETS, MEALS, KITCHEN_DATA } from './constants';
 import PatientDirectory from './components/PatientDirectory';
 import DietPrescriptionModal from './components/DietPrescriptionModal';
