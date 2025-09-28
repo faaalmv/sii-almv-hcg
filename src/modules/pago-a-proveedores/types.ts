@@ -43,7 +43,7 @@ export interface Factura {
 export enum RolUsuario {
   PROVEEDOR = 'Proveedor',
   VALIDADOR_GLOSA = 'Validador Glosa',
-  VALIDADOR_PRESUPUESTO = 'Validador Presupuesto',
+  VALIDADOR_PRESUPUESTO = 'Validador Presupuesto', // This syntax is not allowed when 'erasableSyntaxOnly' is enabled.
 }
 
 export interface Usuario {
