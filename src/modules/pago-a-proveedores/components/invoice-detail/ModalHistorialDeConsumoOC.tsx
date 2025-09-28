@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { OrdenDeCompra, Factura } from '../../types';
-import { Modal } from '../common/Modal';
+import Modal from '../../../../common/Modal';
 import { DocumentTextIcon } from '../icons/Icon';
 
 interface ModalHistorialDeConsumoOCProps {
