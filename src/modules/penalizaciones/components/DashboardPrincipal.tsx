@@ -2,7 +2,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Contrato, IncidenceStatus } from '../types';
-import { AlertTriangleIcon } from './Icons';
+import Icon from '../../../common/icons/Icon';
 
 interface DashboardPrincipalProps {
   contratos: Contrato[];
@@ -75,7 +75,7 @@ const DashboardPrincipal: React.FC<DashboardPrincipalProps> = ({ contratos, onVi
               accionesRequeridas.map(incidencia => (
                 <div key={incidencia.id} className="p-4 bg-orange-50 border border-orange-200 rounded-md">
                   <div className="flex items-start space-x-3">
-                    <AlertTriangleIcon className="h-5 w-5 text-orange-500 mt-0.5" />
+                    <Icon.AlertTriangle className="h-5 w-5 text-orange-500 mt-0.5" />
                     <div>
                       <p className="text-sm font-semibold text-gray-800">{incidencia.tipo}</p>
                       <p className="text-xs text-gray-600">

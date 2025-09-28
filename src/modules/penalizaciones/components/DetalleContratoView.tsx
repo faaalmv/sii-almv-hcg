@@ -60,7 +60,7 @@ const DetalleContratoView: React.FC<DetalleContratoViewProps> = ({ contrato, onB
           </div>
           <div className="mt-4 flex flex-col md:flex-row md:items-center md:space-x-8 text-gray-600">
             <div className="flex items-center">
-              <CalendarIcon className="h-5 w-5 mr-2 text-gray-400" />
+              <Icon.Calendar className="h-5 w-5 mr-2 text-gray-400" />
               <span>Vigencia: {new Date(contrato.fechaInicio).toLocaleDateString('es-MX')} al {new Date(contrato.fechaFin).toLocaleDateString('es-MX')}</span>
             </div>
             <div className="mt-2 md:mt-0">

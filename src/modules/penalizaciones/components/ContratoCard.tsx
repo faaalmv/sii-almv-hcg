@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Contrato, ContractStatus } from '../types';
-import { CalendarIcon, ChevronRightIcon } from './Icons';
+import Icon from '../../../common/icons/Icon';
 
 interface ContratoCardProps {
   contrato: Contrato;
