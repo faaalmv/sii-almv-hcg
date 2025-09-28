@@ -6,7 +6,7 @@ import DashboardPrincipal from './components/DashboardPrincipal';
 import ListaContratos from './components/ListaContratos';
 import DetalleContratoView from './components/DetalleContratoView';
 import Icon from '../../common/icons/Icon';
-import Toast from '../../common/Toast';
+import Toast from '@/common/Toast';
 
 type View = 'dashboard' | 'contracts';
 
