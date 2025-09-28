@@ -2,7 +2,7 @@
 import React from 'react';
 import { OrdenDeCompra, Factura } from '../../types';
 import Modal from '../../../../common/Modal';
-import Icon from '../../../../common/icons/Icon';
+import { DocumentTextIcon } from '../../../../common/icons/Icon';
 
 interface ModalHistorialDeConsumoOCProps {
   isOpen: boolean;
@@ -45,7 +45,7 @@ export const ModalHistorialDeConsumoOC: React.FC<ModalHistorialDeConsumoOCProps>
                             <li key={factura.id} className="p-3">
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center space-x-3">
-                                        <Icon.DocumentText className="w-5 h-5 text-gray-400" />
+                                        <DocumentTextIcon className="w-5 h-5 text-gray-400" />
                                         <div>
                                             <p className="text-sm font-medium text-gray-800">Folio: ...{factura.folioFiscal.slice(-12)}</p>
                                             <p className="text-xs text-gray-500">Cargada el: {formatDate(factura.fechaCarga)}</p>

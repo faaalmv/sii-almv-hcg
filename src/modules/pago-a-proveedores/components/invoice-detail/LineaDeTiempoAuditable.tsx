@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { HistorialItem, EstadoFactura } from '../../types';
-import { CheckIcon, XIcon, ClockIcon, ChevronDownIcon, UserCircleIcon } from '../../../../common/icons/Icon';
+import Icon from '../../../../common/icons/Icon';
 
 interface LineaDeTiempoAuditableProps {
   historial: HistorialItem[];
@@ -18,7 +18,7 @@ const EventoIcon: React.FC<{ etapa: EstadoFactura }> = ({ etapa }) => {
       ${etapa === EstadoFactura.PAGADA ? 'bg-green-500' : ''}
       ${etapa !== EstadoFactura.RECHAZADA && etapa !== EstadoFactura.PAGADA ? 'bg-blue-500' : ''}
     `}>
-      {iconMap[etapa] || <ClockIcon className="w-5 h-5 text-white" />}
+      {iconMap[etapa] || <Icon.Clock className="w-5 h-5 text-white" />}
     </div>
   );
 };

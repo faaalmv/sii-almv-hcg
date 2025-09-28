@@ -3,7 +3,7 @@ import React from 'react';
 import { OrdenDeCompra } from '../../types';
 import Modal from '../../../../common/Modal';
 import { Button } from '../common/Button';
-import Icon from '../../../../common/icons/Icon';
+import { LinkIcon } from '../../../../common/icons/Icon';
 
 interface ModalDeVinculacionOCProps {
   isOpen: boolean;
@@ -39,7 +39,7 @@ export const ModalDeVinculacionOC: React.FC<ModalDeVinculacionOCProps> = ({ isOp
                     </div>
                     <Button onClick={() => onSelectOC(oc.id)} disabled={!puedeVincular}>
                         <span className="flex items-center space-x-2">
-                            <LinkIcon className="w-4 h-4" />
+                            <Icon.Link className="w-4 h-4" />
                             <span>Vincular</span>
                         </span>
                     </Button>
