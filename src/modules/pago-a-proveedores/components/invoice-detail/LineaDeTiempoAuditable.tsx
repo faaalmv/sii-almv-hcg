@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { HistorialItem, EstadoFactura } from '../../types';
-import { CheckIcon, XIcon, ClockIcon, ChevronDownIcon, UserCircleIcon } from '../icons/Icon';
+import { CheckIcon, XIcon, ClockIcon, ChevronDownIcon, UserCircleIcon } from '../../../../common/icons/Icon';
 
 interface LineaDeTiempoAuditableProps {
   historial: HistorialItem[];

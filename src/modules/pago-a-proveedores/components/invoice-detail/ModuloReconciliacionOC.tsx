@@ -4,7 +4,7 @@ import { Factura, OrdenDeCompra } from '../../types';
 import { Button } from '../common/Button';
 import { TarjetaResumenOC } from './TarjetaResumenOC';
 import { ModalDeVinculacionOC } from './ModalDeVinculacionOC';
-import { LinkIcon } from '../icons/Icon';
+import Icon from '../../../../common/icons/Icon';
 
 interface ModuloReconciliacionOCProps {
   factura: Factura;
@@ -40,7 +40,7 @@ export const ModuloReconciliacionOC: React.FC<ModuloReconciliacionOCProps> = ({ 
           <p className="text-gray-600 mb-4">Esta factura no está vinculada a una orden de compra.</p>
           <Button onClick={() => setIsLinkModalOpen(true)}>
             <span className="flex items-center space-x-2">
-                <LinkIcon className="w-5 h-5" />
+                <Icon.Link className="w-5 h-5" />
                 <span>Vincular a Orden de Compra</span>
             </span>
           </Button>
