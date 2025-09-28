@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Patient, Diet } from '../types';
+import { type Patient, type Diet } from '../types';
 
 interface DietPrescriptionModalProps {
   patient: Patient;
@@ -115,7 +115,7 @@ const DietPrescriptionModal: React.FC<DietPrescriptionModalProps> = ({ patient, 
             onClick={handleSave}
             disabled={!!conflict || isSaving}
             className={`px-6 py-2 text-sm font-semibold text-white rounded-lg transition-all active:scale-95 flex items-center justify-center min-w-[120px]
-            ${conflict || isSaving ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg'}
+            ${conflict || isSaving ? 'bg-gray-400 cursor-not-allowed' : 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg'}
             `}
           >
             {isSaving ? 
