@@ -122,7 +122,7 @@ export const FacturaDetailView: React.FC<FacturaDetailViewProps> = ({
                 </Button>
             )}
             <Button onClick={() => setIsRejectModalOpen(true)} variant="danger">
-              <span className="flex items-center space-x-2"><Icon.X className="w-5 h-5"/> <span>Rechazar con Motivo</span></span>
+              <span className="flex items-center space-x-2"><XIcon className="w-5 h-5"/> <span>Rechazar con Motivo</span></span>
             </Button>
           </div>
         </div>

@@ -44,7 +44,7 @@ const PanelAprobado: React.FC<{ factura: Factura }> = ({ factura }) => (
           ¡Buenas noticias! Tu factura ha sido aprobada y está en la cola para ser pagada.
         </p>
         <div className="mt-3 flex items-center space-x-2 text-blue-700">
-            <CalendarDaysIcon className="w-5 h-5" />
+            <Icon.CalendarDays className="w-5 h-5" />
             <span>Fecha estimada de pago: <strong>3 de Octubre de 2025</strong></span>
         </div>
       </div>
@@ -55,7 +55,7 @@ const PanelAprobado: React.FC<{ factura: Factura }> = ({ factura }) => (
 const PanelPendiente: React.FC<{ factura: Factura }> = ({ factura }) => (
   <div className="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-r-lg" role="status">
     <div className="flex items-start">
-      <InformationCircleIcon className="w-6 h-6 mr-3 flex-shrink-0" />
+      <Icon.InformationCircle className="w-6 h-6 mr-3 flex-shrink-0" />
       <div>
         <h4 className="font-bold text-lg">En Proceso</h4>
         <p className="text-md mt-1">
