@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Patient, Diet } from '../types';
+import { type Patient, type Diet } from '../types';
 import PatientCard from './PatientCard';
 
 interface PatientDirectoryProps {
