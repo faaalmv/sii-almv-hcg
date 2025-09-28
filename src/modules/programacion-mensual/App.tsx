@@ -5,7 +5,7 @@ import SchedulingTable from './components/SchedulingTable';
 import DailySchedulingTable from './components/DailySchedulingTable';
 import CustomSelect from './components/CustomSelect';
 import Tabs from './components/Tabs';
-import { SearchIcon, WarningIcon, ExportIcon } from './components/icons';
+import Icon from '../../common/icons/Icon';
 
 // --- Toast Component ---
 interface ToastProps {
@@ -29,7 +29,7 @@ const Toast: React.FC<ToastProps> = ({ message, type, onClose }) => {
     warning: {
       bg: 'bg-amber-500',
       text: 'text-white',
-      icon: <WarningIcon className="w-6 h-6" />
+      icon: <Icon.Warning className="w-6 h-6" />
     }
   };
 
