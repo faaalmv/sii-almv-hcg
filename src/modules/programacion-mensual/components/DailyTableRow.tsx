@@ -84,7 +84,7 @@ export const DailyTableRow: React.FC<DailyTableRowProps> = ({ item, onValueChang
                     value={value}
                     onChange={handleMealValueChange}
                     disabled={isCellDisabled}
-                    availableQuantity={available}
+                    availableQuantity={available + value}
                     showToast={showToast}
                   />
                 </td>

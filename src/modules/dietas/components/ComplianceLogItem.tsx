@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
-import { type ComplianceLog, type ComplianceStatus } from '../types';
+import { type ComplianceLog } from '../types';
+import { checkRange } from '../utils/rangeUtils';
 
 interface ComplianceLogItemProps {
   log: ComplianceLog;
@@ -27,15 +28,9 @@ const ComplianceLogItem: React.FC<ComplianceLogItemProps> = ({ log, onUpdate }) 
     
     const numValue = parseFloat(value);
     if (!isNaN(numValue)) {
-      // Basic range check, assumes format like '< 4' or '> 60'
-      const rangeParts = log.range.split(' ');
-      const limit = parseFloat(rangeParts[1]);
-      let outOfRange = false;
-      if (rangeParts[0] === '<') outOfRange = numValue >= limit;
-      if (rangeParts[0] === '>') outOfRange = numValue <= limit;
-      
-      setIsOutOfRange(outOfRange);
-      setShowActions(outOfRange);
+      const inRange = checkRange(numValue, log.range);
+      setIsOutOfRange(!inRange);
+      setShowActions(!inRange);
     } else {
         setIsOutOfRange(false);
         setShowActions(false);
