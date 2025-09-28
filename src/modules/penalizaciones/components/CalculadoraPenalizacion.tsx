@@ -21,6 +21,8 @@ const CalculadoraPenalizacion: React.FC<CalculadoraPenalizacionProps> = ({ incid
 
     useEffect(() => {
         if (isApplied) return;
+        const timers: number[] = [];
+        if (step < 3) {
             timers.push(setTimeout(() => setStep(prev => prev + 1), 500));
         }
         return () => timers.forEach(clearTimeout);
