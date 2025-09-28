@@ -17,8 +17,8 @@ export interface OrderItem {
     id: string;
     codigo: string;
     descripcion: string;
-um: string;
-    cantidadPedida: string;
-    cantidadSurtida: string;
+    um: string;
+    cantidadPedida: number;
+    cantidadSurtida: number;
     observaciones: string;
 }
