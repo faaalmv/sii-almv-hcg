@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Factura, Usuario, EstadoFactura, OrdenDeCompra } from '../types';
 import { MOTIVOS_RECHAZO_COMUNES } from '../constants';
 import { Button } from './common/Button';
-import { Modal } from './common/Modal';
+import Modal from '../../../common/Modal';
 import { CheckIcon, XIcon, ClockIcon } from './icons/Icon';
 import { ModuloReconciliacionOC } from './invoice-detail/ModuloReconciliacionOC';
 
