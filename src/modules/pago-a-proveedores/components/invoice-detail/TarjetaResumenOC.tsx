@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { OrdenDeCompra, Factura } from '../../types';
-import { ModalHistorialDeConsumoOC } from '../ModalHistorialDeConsumoOC';
+import { ModalHistorialDeConsumoOC } from './ModalHistorialDeConsumoOC';
 
 interface TarjetaResumenOCProps {
   ordenDeCompra: OrdenDeCompra;

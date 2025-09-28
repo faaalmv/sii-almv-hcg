@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { type ComplianceLog, type ComplianceStatus } from '../types';
-import { ComplianceLogItem } from './ComplianceLogItem';
+import ComplianceLogItem from './ComplianceLogItem';
 import { COMPLIANCE_DATA } from '../constants';
 
 const ComplianceTracker: React.FC = () => {
