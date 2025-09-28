@@ -5,6 +5,7 @@ export default defineConfig(({ mode }) => {
     // Carga las variables de entorno de .env.local
     const env = loadEnv(mode, '.', '');
     return {
+      root: 'src',
       server: {
         port: 3000,
         host: '0.0.0.0', // Permite el acceso desde otras IPs en la red local si es necesario
