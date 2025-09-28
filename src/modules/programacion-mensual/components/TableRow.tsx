@@ -106,7 +106,7 @@ export const TableRow: React.FC<TableRowProps> = ({ item, onValueChange, showToa
             {exceedsMax ? (
               <Icon.Warning className="h-5 w-5 text-rose-600" />
             ) : (
-              total > 0 && <CheckCircleIcon className="h-5 w-5 text-emerald-600" />
+              total > 0 && <Icon.CheckCircle className="h-5 w-5 text-emerald-600" />
             )}
           </div>
         </div>
