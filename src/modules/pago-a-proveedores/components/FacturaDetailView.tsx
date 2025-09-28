@@ -4,7 +4,7 @@ import { Factura, Usuario, EstadoFactura, OrdenDeCompra } from '../types';
 import { MOTIVOS_RECHAZO_COMUNES } from '../constants';
 import { Button } from './common/Button';
 import Modal from '../../../common/Modal';
-import Icon from '../../../common/icons/Icon';
+import { CheckIcon, XIcon, ClockIcon } from '../../../common/icons/Icon';
 import { ModuloReconciliacionOC } from './invoice-detail/ModuloReconciliacionOC';
 
 interface FacturaDetailViewProps {

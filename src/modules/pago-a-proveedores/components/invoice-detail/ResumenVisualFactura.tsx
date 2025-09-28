@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Factura } from '../../types';
-import { BuildingOfficeIcon, UserCircleIcon } from '../icons/Icon';
+import Icon from '../../../../common/icons/Icon';
 
 interface ResumenVisualFacturaProps {
   factura: Factura;
