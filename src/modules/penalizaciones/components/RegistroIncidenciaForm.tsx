@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { IncidenceType, HitoDeEntrega } from '../types';
-import { XIcon } from './Icons';
+import Icon from '../../../common/icons/Icon';
 
 interface RegistroIncidenciaFormProps {
   hito: HitoDeEntrega;
@@ -26,7 +26,7 @@ const RegistroIncidenciaForm: React.FC<RegistroIncidenciaFormProps> = ({ hito, o
         <div className="p-6 border-b border-gray-200 flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-800">Registrar Incidencia</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition">
-            <XIcon className="h-6 w-6" />
+            <Icon.X className="h-6 w-6" />
           </button>
         </div>
         <form onSubmit={handleSubmit}>

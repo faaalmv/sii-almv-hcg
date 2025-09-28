@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Contrato, HitoDeEntrega, Incidencia, IncidenceStatus, Penalizacion, ContractStatus } from '../types';
-import { ArrowLeftIcon, CalendarIcon } from './Icons';
+import Icon from '../../../common/icons/Icon';
 import TimelineHitos from './TimelineHitos';
 import CalculadoraPenalizacion from './CalculadoraPenalizacion';
 import RegistroIncidenciaForm from './RegistroIncidenciaForm';
@@ -43,7 +43,7 @@ const DetalleContratoView: React.FC<DetalleContratoViewProps> = ({ contrato, onB
   return (
     <div className="p-4 md:p-8 animate-fade-in">
       <button onClick={onBack} className="flex items-center text-sm font-medium text-gray-600 hover:text-gray-900 mb-6">
-        <ArrowLeftIcon className="h-5 w-5 mr-2" />
+        <Icon.ArrowLeft className="h-5 w-5 mr-2" />
         Volver a la lista de contratos
       </button>
 
