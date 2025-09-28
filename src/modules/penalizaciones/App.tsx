@@ -6,7 +6,7 @@ import { Contrato, IncidenceType, IncidenceStatus, MilestoneStatus, Penalizacion
 import DashboardPrincipal from './components/DashboardPrincipal';
 import ListaContratos from './components/ListaContratos';
 import DetalleContratoView from './components/DetalleContratoView';
-import { DashboardIcon, ContractsIcon, BellIcon } from './components/Icons';
+import Icon from '../../common/icons/Icon';
 import Toast from './components/Toast';
 
 type View = 'dashboard' | 'contracts';
