@@ -106,7 +106,7 @@ export const DailyTableRow: React.FC<DailyTableRowProps> = ({ item, onValueChang
             {exceedsMax ? (
               <Icon.Warning className="h-5 w-5 text-rose-600" />
             ) : (
-              total > 0 && <CheckCircleIcon className="h-5 w-5 text-emerald-600" />
+              total > 0 && <Icon.CheckCircle className="h-5 w-5 text-emerald-600" />
             )}
           </div>
         </div>
