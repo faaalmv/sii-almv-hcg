@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Factura, HistorialItem, EstadoFactura } from '../types';
 import { ESTADOS_FACTURA_ORDEN } from '../constants';
-import { CheckCircleIcon, XCircleIcon } from './icons/Icon';
+import Icon from '../../../common/icons/Icon';
 
 interface FacturaTimelineProps {
   factura: Factura;
@@ -42,7 +42,7 @@ export const FacturaTimeline: React.FC<FacturaTimelineProps> = ({ factura }) => 
     const rejectionItem = factura.historial[factura.historial.length-1];
     return (
        <div className="flex items-center space-x-2 text-red-600">
-          <XCircleIcon className="w-5 h-5"/>
+          <Icon.XCircle className="w-5 h-5"/>
           <div className="flex flex-col">
               <span className="font-semibold">Rechazada</span>
               <Tooltip message={rejectionItem.motivoRechazo || 'Sin motivo específico'}>
@@ -68,7 +68,7 @@ export const FacturaTimeline: React.FC<FacturaTimelineProps> = ({ factura }) => 
               <div
                 className={`w-6 h-6 rounded-full flex items-center justify-center border-2 border-${color}-500 bg-${color}-100`}
               >
-                {isCompleted && <CheckCircleIcon className={`w-5 h-5 text-${color}-600`} />}
+                {isCompleted && <Icon.CheckCircle className={`w-5 h-5 text-${color}-600`} />}
                 {isCurrent && <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>}
               </div>
               <p className={`mt-1 text-xs text-center text-gray-600 ${isCurrent ? 'font-bold text-blue-700' : ''}`}>{etapa}</p>

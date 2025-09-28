@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Factura, EstadoFactura, OrdenDeCompra } from '../types';
-import { ChevronDownIcon, DocumentTextIcon, ClockIcon } from './icons/Icon';
+import Icon from '../../../common/icons/Icon';
 import { CentroDeComandoFactura } from './invoice-detail/CentroDeComandoFactura';
 
 interface FacturaItemProps {
