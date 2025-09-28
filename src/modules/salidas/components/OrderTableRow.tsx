@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import type { OrderItem, ItemData } from '../types';
 import { itemsData } from '../data/items';
 import { convertNumberToWords } from '../utils/numberToWords';
-import Modal from './Modal';
+import Modal from '../../../common/Modal';
 
 interface OrderTableRowProps {
   item: OrderItem;
