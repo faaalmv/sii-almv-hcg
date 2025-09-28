@@ -107,8 +107,8 @@ const App: React.FC = () => {
           <h1 className="text-xl font-bold tracking-wider">PENALIZACIONES</h1>
         </div>
         <nav className="flex-1 px-4 py-6 space-y-2">
-          <NavItem icon={<DashboardIcon className="h-6 w-6"/>} label="Dashboard" active={currentView === 'dashboard' && !selectedContratoId} onClick={() => { setCurrentView('dashboard'); setSelectedContratoId(null); }} />
-          <NavItem icon={<ContractsIcon className="h-6 w-6"/>} label="Contratos" active={currentView === 'contracts' || !!selectedContratoId} onClick={() => { setCurrentView('contracts'); setSelectedContratoId(null); }} />
+          <NavItem icon={<Icon.Dashboard className="h-6 w-6"/>} label="Dashboard" active={currentView === 'dashboard' && !selectedContratoId} onClick={() => { setCurrentView('dashboard'); setSelectedContratoId(null); }} />
+          <NavItem icon={<Icon.Contracts className="h-6 w-6"/>} label="Contratos" active={currentView === 'contracts' || !!selectedContratoId} onClick={() => { setCurrentView('contracts'); setSelectedContratoId(null); }} />
         </nav>
         <div className="p-4 border-t border-gray-700">
             <div className="flex items-center">
@@ -124,7 +124,7 @@ const App: React.FC = () => {
       <div className="flex-1 flex flex-col overflow-hidden">
         <header className="h-20 bg-white border-b border-gray-200 flex items-center justify-end px-8">
             <button className="relative p-2 text-gray-500 hover:text-gray-700">
-                <BellIcon className="h-6 w-6" />
+                <Icon.Bell className="h-6 w-6" />
                 <span className="absolute top-1 right-1 h-3 w-3">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
