@@ -1,6 +1,6 @@
 import React from 'react';
 import { Factura } from '../types';
-import { EyeIcon } from './icons/Icon';
+import Icon from '../../../common/icons/Icon';
 
 interface BandejaDeTareasProps {
   facturas: Factura[];
@@ -46,7 +46,7 @@ export const BandejaDeTareas: React.FC<BandejaDeTareasProps> = ({ facturas, onSe
                     </div>
                     <div className="flex-none">
                     <button className="flex items-center space-x-2 text-sm text-blue-600 hover:text-blue-800 font-semibold">
-                        <EyeIcon />
+                        <Icon.Eye />
                         <span>Revisar</span>
                     </button>
                     </div>

@@ -5,7 +5,7 @@ import { FacturasDashboard } from './FacturasDashboard';
 import { Button } from './common/Button';
 import { Modal } from './common/Modal';
 import { FacturaUploader } from './FacturaUploader';
-import { UploadIcon } from './icons/Icon';
+import Icon from '../../../common/icons/Icon';
 
 interface PortalProveedorProps {
   facturas: Factura[];
@@ -32,7 +32,7 @@ export const PortalProveedor: React.FC<PortalProveedorProps> = ({ facturas, curr
         <h1 className="text-3xl font-bold text-gray-800">Mis Facturas</h1>
         <Button onClick={() => setIsUploaderOpen(true)} variant="primary">
           <span className="flex items-center space-x-2">
-            <UploadIcon className="w-5 h-5"/>
+            <Icon.Upload className="w-5 h-5"/>
             <span>Cargar Factura</span>
           </span>
         </Button>
