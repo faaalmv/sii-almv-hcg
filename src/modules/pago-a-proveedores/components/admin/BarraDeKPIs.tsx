@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { Factura, OrdenDeCompra, EstadoFactura } from '../../types';
 import { TarjetaKPI } from './TarjetaKPI';
-import { CurrencyDollarIcon, ExclamationTriangleIcon, ArchiveBoxXMarkIcon, DocumentPlusIcon } from '../icons/Icon';
+import { CurrencyDollarIcon, ExclamationTriangleIcon, ArchiveBoxXMarkIcon, DocumentPlusIcon } from '../../../../common/icons/Icon';
 
 interface BarraDeKPIsProps {
     facturas: Factura[];

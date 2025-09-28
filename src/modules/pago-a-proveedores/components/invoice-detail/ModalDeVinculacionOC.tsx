@@ -39,7 +39,7 @@ export const ModalDeVinculacionOC: React.FC<ModalDeVinculacionOCProps> = ({ isOp
                     </div>
                     <Button onClick={() => onSelectOC(oc.id)} disabled={!puedeVincular}>
                         <span className="flex items-center space-x-2">
-                            <Icon.Link className="w-4 h-4" />
+                            <LinkIcon className="w-4 h-4" />
                             <span>Vincular</span>
                         </span>
                     </Button>
