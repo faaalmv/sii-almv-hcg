@@ -142,7 +142,7 @@ export const FacturaUploader: React.FC<FacturaUploaderProps> = ({ onUploadSucces
 
       {error && (
         <div className="mt-4 p-3 flex items-center bg-red-100 text-red-700 rounded-md">
-            <XCircleIcon className="w-5 h-5 mr-2" />
+            <Icon.XCircle className="w-5 h-5 mr-2" />
             <span>{error}</span>
         </div>
       )}
