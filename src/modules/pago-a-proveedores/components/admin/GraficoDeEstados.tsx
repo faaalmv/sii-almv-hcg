@@ -1,3 +1,4 @@
+
 import React, { useMemo, useState } from 'react';
 import { Factura, EstadoFactura } from '../../types';
 
@@ -30,7 +31,7 @@ const Tooltip: React.FC<{ data: ChartData | null; position: { x: number; y: numb
   );
 };
 
-export const GraficoDeEstados: React.FC<{ facturas: Factura[] }> = ({ facturas }) => {
+const GraficoDeEstadosComponent: React.FC<{ facturas: Factura[] }> = ({ facturas }) => {
   const [hoveredSegment, setHoveredSegment] = useState<ChartData | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
@@ -120,3 +121,5 @@ export const GraficoDeEstados: React.FC<{ facturas: Factura[] }> = ({ facturas }
     </div>
   );
 };
+
+export const GraficoDeEstados = React.memo(GraficoDeEstadosComponent);
