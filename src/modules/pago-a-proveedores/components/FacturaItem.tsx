@@ -54,7 +54,7 @@ export const FacturaItem: React.FC<FacturaItemProps> = ({ factura, index, ordene
         <div className="flex flex-wrap justify-between items-center gap-4">
           <div className="flex-1 min-w-[200px]">
             <div className="flex items-center text-sm text-gray-500">
-              <DocumentTextIcon className="w-4 h-4 mr-2"/>
+              <Icon.DocumentText className="w-4 h-4 mr-2"/>
               <p>Folio Fiscal: {factura.folioFiscal.substring(0, 8)}...</p>
             </div>
             <p className="text-xl font-bold text-gray-800">{formatCurrency(factura.monto)}</p>
@@ -62,7 +62,7 @@ export const FacturaItem: React.FC<FacturaItemProps> = ({ factura, index, ordene
           
           <div className="flex-1 min-w-[150px]">
              <div className="flex items-center text-sm text-gray-500">
-                <ClockIcon className="w-4 h-4 mr-2"/>
+                <Icon.Clock className="w-4 h-4 mr-2"/>
                 <p>Fecha de Carga</p>
             </div>
             <p className="font-semibold text-gray-700">{formatDate(factura.fechaCarga)}</p>
@@ -74,7 +74,7 @@ export const FacturaItem: React.FC<FacturaItemProps> = ({ factura, index, ordene
             >
               {factura.estadoActual}
             </span>
-            <ChevronDownIcon className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+            <Icon.ChevronDown className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
           </div>
         </div>
       </div>
