@@ -5,12 +5,18 @@ import { PortalProveedor } from './components/PortalProveedor';
 import { DashboardInterno } from './components/DashboardInterno';
 import { LoginView } from './components/LoginView';
 import Icon from '../../common/icons/Icon';
+import Toast from './components/Toast';
 
 const App: React.FC = () => {
   const [facturas, setFacturas] = useState<Factura[]>(MOCK_FACTURAS);
   const [ordenesDeCompra, setOrdenesDeCompra] = useState<OrdenDeCompra[]>(MOCK_ORDENES_DE_COMPRA);
   const [currentUser, setCurrentUser] = useState<Usuario | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  const showToast = (message: string) => {
+      setToastMessage(message);
+  };
 
   const handleAddFactura = (newFacturaData: Omit<Factura, 'id' | 'proveedorId'>) => {
     if (!currentUser) return;
@@ -42,12 +48,12 @@ const App: React.FC = () => {
     if (!factura || !ordenDeCompra) return;
 
     if (factura.ordenDeCompraId) {
-        alert('Esta factura ya está vinculada a una Orden de Compra.');
+        showToast('Esta factura ya está vinculada a una Orden de Compra.');
         return;
     }
 
     if (ordenDeCompra.montoTotal < ordenDeCompra.montoConsumido + factura.monto) {
-        alert('Error: El monto de la factura excede el saldo disponible de la Orden de Compra.');
+        showToast('Error: El monto de la factura excede el saldo disponible de la Orden de Compra.');
         return;
     }
 
@@ -60,6 +66,7 @@ const App: React.FC = () => {
         facturasVinculadasIds: [...ordenDeCompra.facturasVinculadasIds, factura.id]
     };
     setOrdenesDeCompra(prev => prev.map(oc => oc.id === ordenDeCompraId ? updatedOC : oc));
+    showToast('Factura vinculada a la Orden de Compra con éxito.');
   };
 
   if (!currentUser) {
@@ -71,6 +78,7 @@ const App: React.FC = () => {
 
   return (
     <>
+      {toastMessage && <Toast message={toastMessage} onClose={() => setToastMessage(null)} />}
       <style>{`
           @keyframes app-fade-in-up {
             from {

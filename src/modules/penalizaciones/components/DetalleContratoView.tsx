@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Contrato, HitoDeEntrega, Incidencia, IncidenceStatus, Penalizacion, ContractStatus } from '../types';
+import { Contrato, HitoDeEntrega, Incidencia, IncidenceStatus, Penalizacion, ContractStatus, IncidenceType } from '../types';
 import Icon from '../../../common/icons/Icon';
 import TimelineHitos from './TimelineHitos';
 import CalculadoraPenalizacion from './CalculadoraPenalizacion';
@@ -9,7 +8,7 @@ import RegistroIncidenciaForm from './RegistroIncidenciaForm';
 interface DetalleContratoViewProps {
   contrato: Contrato;
   onBack: () => void;
-  onRegisterIncidence: (contratoId: string, hitoId: string, incidenciaData: { tipo: any; descripcion: string }) => void;
+  onRegisterIncidence: (contratoId: string, hitoId: string, incidenciaData: { tipo: IncidenceType; descripcion: string }) => void;
   onApplyPenalty: (contratoId: string, incidenciaId: string, penalizacion: Omit<Penalizacion, 'id'>) => void;
 }
 
@@ -33,7 +32,7 @@ const DetalleContratoView: React.FC<DetalleContratoViewProps> = ({ contrato, onB
   const [showIncidenceForm, setShowIncidenceForm] = React.useState<HitoDeEntrega | null>(null);
   const { text, bg } = getStatusStyles(contrato.status);
 
-  const handleRegisterIncidence = (incidenciaData: { tipo: any; descripcion: string }) => {
+  const handleRegisterIncidence = (incidenciaData: { tipo: IncidenceType; descripcion: string }) => {
     if (showIncidenceForm) {
       onRegisterIncidence(contrato.id, showIncidenceForm.id, incidenciaData);
       setShowIncidenceForm(null);
