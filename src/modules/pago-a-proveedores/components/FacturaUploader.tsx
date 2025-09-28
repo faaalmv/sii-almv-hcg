@@ -152,7 +152,7 @@ export const FacturaUploader: React.FC<FacturaUploaderProps> = ({ onUploadSucces
             <h3 className="text-lg font-semibold text-gray-800 flex items-center">
                 Datos Extraídos del XML
                 {isValidated ? 
-                    <CheckCircleIcon className="w-6 h-6 ml-2 text-green-500" /> :
+                    <Icon.CheckCircle className="w-6 h-6 ml-2 text-green-500" /> :
                     <XCircleIcon className="w-6 h-6 ml-2 text-red-500" />
                 }
             </h3>
