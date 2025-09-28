@@ -3,7 +3,7 @@ import React from 'react';
 import { Factura, OrdenDeCompra } from '../types';
 import { FacturaItem } from './FacturaItem';
 import { Button } from './common/Button';
-import { UploadIcon } from './icons/Icon';
+import Icon from '../../../common/icons/Icon';
 
 interface FacturasDashboardProps {
   facturas: Factura[];
@@ -23,7 +23,7 @@ export const FacturasDashboard: React.FC<FacturasDashboardProps> = ({ facturas, 
           <div className="mt-6">
             <Button onClick={onUploadClick} variant="primary">
               <span className="flex items-center space-x-2">
-                <UploadIcon className="w-5 h-5"/>
+                <Icon.Upload className="w-5 h-5"/>
                 <span>Cargar Nueva Factura</span>
               </span>
             </Button>
