@@ -5,7 +5,7 @@ import { PortalProveedor } from './components/PortalProveedor';
 import { DashboardInterno } from './components/DashboardInterno';
 import { LoginView } from './components/LoginView';
 import Icon from '../../common/icons/Icon';
-import Toast from '@/common/Toast';
+import Toast from '../../common/Toast';
 
 const App: React.FC = () => {
   const [facturas, setFacturas] = useState<Factura[]>(MOCK_FACTURAS);
