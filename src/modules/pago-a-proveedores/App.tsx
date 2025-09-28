@@ -4,7 +4,7 @@ import { MOCK_FACTURAS, MOCK_USUARIOS, MOCK_ORDENES_DE_COMPRA } from './constant
 import { PortalProveedor } from './components/PortalProveedor';
 import { DashboardInterno } from './components/DashboardInterno';
 import { LoginView } from './components/LoginView';
-import { MagnifyingGlassIcon } from './components/icons/Icon';
+import Icon from '../../common/icons/Icon';
 
 const App: React.FC = () => {
   const [facturas, setFacturas] = useState<Factura[]>(MOCK_FACTURAS);
@@ -99,7 +99,7 @@ const App: React.FC = () => {
               <div className="flex items-center space-x-4">
                   {isAdmin && (
                     <div className="relative">
-                       <MagnifyingGlassIcon className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"/>
+                       <Icon.MagnifyingGlass className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"/>
                        <input 
                          type="text"
                          placeholder="Buscar por folio, OC, proveedor..."
