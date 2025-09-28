@@ -153,7 +153,7 @@ export const FacturaUploader: React.FC<FacturaUploaderProps> = ({ onUploadSucces
                 Datos Extraídos del XML
                 {isValidated ? 
                     <Icon.CheckCircle className="w-6 h-6 ml-2 text-green-500" /> :
-                    <XCircleIcon className="w-6 h-6 ml-2 text-red-500" />
+                    <Icon.XCircle className="w-6 h-6 ml-2 text-red-500" />
                 }
             </h3>
             <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
