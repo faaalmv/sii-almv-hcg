@@ -43,7 +43,7 @@ const ContratoCard: React.FC<ContratoCardProps> = ({ contrato, onSelect }) => {
           </div>
         </div>
         <div className="mt-4 flex items-center text-sm text-gray-600">
-          <CalendarIcon className="h-5 w-5 mr-2 text-gray-400" />
+          <Icon.Calendar className="h-5 w-5 mr-2 text-gray-400" />
           <span>{new Date(contrato.fechaInicio).toLocaleDateString('es-MX')} - {new Date(contrato.fechaFin).toLocaleDateString('es-MX')}</span>
         </div>
         <div className="mt-2 text-sm text-gray-600">
@@ -52,7 +52,7 @@ const ContratoCard: React.FC<ContratoCardProps> = ({ contrato, onSelect }) => {
       </div>
       <div className="bg-gray-50 px-6 py-3 rounded-b-lg flex justify-between items-center">
         <span className="text-sm font-medium text-blue-600">Ver detalles</span>
-        <ChevronRightIcon className="h-5 w-5 text-blue-600" />
+        <Icon.ChevronRight className="h-5 w-5 text-blue-600" />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Incidencia, Penalizacion } from '../types';
-import { CheckIcon } from './Icons';
+import Icon from '../../../common/icons/Icon';
 
 interface CalculadoraPenalizacionProps {
     incidencia: Incidencia;
@@ -77,7 +77,7 @@ const CalculadoraPenalizacion: React.FC<CalculadoraPenalizacionProps> = ({ incid
             <div className="mt-6">
                 {isApplied ? (
                     <div className="flex items-center justify-center p-3 bg-green-100 text-green-800 text-sm font-medium rounded-md">
-                        <CheckIcon className="h-5 w-5 mr-2" />
+                        <Icon.Check className="h-5 w-5 mr-2" />
                         Penalización aplicada y notificada. Folio: {incidencia.penalizacion?.folio}
                     </div>
                 ) : (
