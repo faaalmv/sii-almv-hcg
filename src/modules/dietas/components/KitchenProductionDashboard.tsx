@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Meal, KitchenProduction } from '../types';
+import { type Meal, type KitchenProduction } from '../types';
 import ProductionCard from './ProductionCard';
 
 interface KitchenProductionDashboardProps {

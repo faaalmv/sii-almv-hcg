@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ComplianceLog, ComplianceStatus } from '../types';
+import { type ComplianceLog, type ComplianceStatus } from '../types';
 
 interface ComplianceLogItemProps {
   log: ComplianceLog;

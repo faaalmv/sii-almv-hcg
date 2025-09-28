@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Meal } from '../types';
+import { type Meal } from '../types';
 import { useAnimatedCounter } from '../hooks/useAnimatedCounter';
 
 interface ProductionCardProps {

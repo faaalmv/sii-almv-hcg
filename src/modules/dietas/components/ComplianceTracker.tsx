@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ComplianceLog, ComplianceStatus } from '../types';
+import { type ComplianceLog, type ComplianceStatus } from '../types';
 import ComplianceLogItem from './ComplianceLogItem';
 import { COMPLIANCE_DATA } from '../constants';
 
