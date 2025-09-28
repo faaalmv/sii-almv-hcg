@@ -1,26 +1,26 @@
 
-export const checkRange = (value: number, range: string): boolean => {
-  // Handles formats like "< 4", "> 60", "3-5", "3 - 5"
-  const trimmedRange = range.trim();
-
-  // Simple comparisons
-  if (trimmedRange.startsWith('<')) {
-    const limit = parseFloat(trimmedRange.substring(1).trim());
+export const isCompliant = (value: number, range: string): boolean => {
+  // 1. Manejar rangos de 'menor que' (e.j., < 4)
+  if (range.startsWith('<')) {
+    const limit = parseFloat(range.slice(1).trim());
     return value < limit;
   }
-  if (trimmedRange.startsWith('>')) {
-    const limit = parseFloat(trimmedRange.substring(1).trim());
+
+  // 2. Manejar rangos de 'mayor que' (e.j., > 60)
+  if (range.startsWith('>')) {
+    const limit = parseFloat(range.slice(1).trim());
     return value > limit;
   }
 
-  // Range with a dash, e.g., "3-5" or "3 - 5"
-  if (trimmedRange.includes('-')) {
-    const parts = trimmedRange.split('-').map(p => parseFloat(p.trim()));
-    if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
-      return value >= parts[0] && value <= parts[1];
-    }
+  // 3. Manejar rangos de 'entre' (e.j., 2 - 4, o 2.0°C - 4.0°C)
+  // Se usa una regex más flexible para capturar dos números
+  const match = range.match(/(\d+\.?\d*)\s*[a-zA-Z°]*\s*-\s*(\d+\.?\d*)/);
+  if (match && match.length === 3) {
+    const min = parseFloat(match[1]);
+    const max = parseFloat(match[2]);
+    return value >= min && value <= max;
   }
-  
-  // Fallback for unrecognized formats
-  return true; // Or false, depending on desired strictness
+
+  // Si no se reconoce el formato, por defecto se considera no aplicable (o se genera un error de log)
+  return false; 
 };

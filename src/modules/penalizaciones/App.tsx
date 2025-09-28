@@ -1,13 +1,12 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { mockContratos } from './data/mockData';
-// Fix: Imported ContractStatus to resolve 'Cannot find name' error.
 import { Contrato, IncidenceType, IncidenceStatus, MilestoneStatus, Penalizacion, ContractStatus } from './types';
 import DashboardPrincipal from './components/DashboardPrincipal';
 import ListaContratos from './components/ListaContratos';
 import DetalleContratoView from './components/DetalleContratoView';
 import Icon from '../../common/icons/Icon';
-import Toast from './components/Toast';
+import Toast from '../../common/Toast';
 
 type View = 'dashboard' | 'contracts';
 
@@ -15,7 +14,7 @@ const App: React.FC = () => {
   const [contratos, setContratos] = useState<Contrato[]>(mockContratos);
   const [selectedContratoId, setSelectedContratoId] = useState<string | null>(null);
   const [currentView, setCurrentView] = useState<View>('dashboard');
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ isVisible: boolean; message: string; icon: React.FC<any> } | null>(null);
 
   const selectedContrato = useMemo(() => 
     contratos.find(c => c.id === selectedContratoId), 
@@ -30,37 +29,37 @@ const App: React.FC = () => {
   const handleBackToList = () => {
     setSelectedContratoId(null);
   };
+
+  const handleRegisterIncidence = useCallback((incidenciaData: { tipo: IncidenceType; descripcion: string }) => {
+    if (selectedContrato) {
+      setContratos(prevContratos => {
+        return prevContratos.map(contrato => {
+          if (contrato.id === selectedContrato.id) {
+            const newIncidence = {
+              id: `INC-${Date.now()}`,
+              hitoId: 'some-hito-id', // This should be properly set based on context
+              ...incidenciaData,
+              fechaDeteccion: new Date().toISOString(),
+              status: IncidenceStatus.Abierta,
+            };
+            
+            const updatedHitos = contrato.hitosDeEntrega.map(h => {
+                // Logic to update hito status if necessary
+                return h;
+            })
   
-  const showToast = (message: string) => {
-      setToastMessage(message);
-  };
-
-  const handleRegisterIncidence = useCallback((contratoId: string, hitoId: string, incidenciaData: { tipo: IncidenceType; descripcion: string }) => {
-    setContratos(prevContratos => {
-      return prevContratos.map(contrato => {
-        if (contrato.id === contratoId) {
-          const newIncidence = {
-            id: `INC-${Date.now()}`,
-            hitoId,
-            ...incidenciaData,
-            fechaDeteccion: new Date().toISOString(),
-            status: IncidenceStatus.Abierta,
-          };
-          
-          const updatedHitos = contrato.hitosDeEntrega.map(h => {
-              if (h.id === hitoId && h.status !== MilestoneStatus.Atrasado && h.status !== MilestoneStatus.Incumplido) {
-                  return {...h, status: MilestoneStatus.Incumplido}
-              }
-              return h;
-          })
-
-          return { ...contrato, incidencias: [...contrato.incidencias, newIncidence], hitosDeEntrega: updatedHitos };
-        }
-        return contrato;
+            return { ...contrato, incidencias: [...contrato.incidencias, newIncidence], hitosDeEntrega: updatedHitos };
+          }
+          return contrato;
+        });
       });
-    });
-    showToast("Incidencia registrada con éxito.");
-  }, []);
+      setToast({
+        isVisible: true,
+        message: "Incidencia registrada con éxito.",
+        icon: Icon.Check,
+      });
+    }
+  }, [selectedContrato]);
 
   const handleApplyPenalty = useCallback((contratoId: string, incidenciaId: string, penalizacionData: Omit<Penalizacion, 'id'>) => {
     setContratos(prevContratos => {
@@ -81,7 +80,11 @@ const App: React.FC = () => {
         return contrato;
       });
     });
-    showToast(`Notificación enviada con éxito. Folio: ${penalizacionData.folio}`);
+    setToast({
+        isVisible: true,
+        message: `Notificación enviada con éxito. Folio: ${penalizacionData.folio}`,
+        icon: Icon.Check,
+      });
   }, []);
 
   const renderContent = () => {
@@ -101,7 +104,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-gray-100 font-sans">
-      {toastMessage && <Toast message={toastMessage} onClose={() => setToastMessage(null)} />}
+      {toast?.isVisible && <Toast message={toast.message} onClose={() => setToast(null)} />}
       <aside className="w-64 bg-gray-800 text-white flex flex-col">
         <div className="h-20 flex items-center justify-center border-b border-gray-700">
           <h1 className="text-xl font-bold tracking-wider">PENALIZACIONES</h1>

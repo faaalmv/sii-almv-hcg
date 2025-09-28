@@ -1,87 +1,64 @@
 
-import React, { useState } from 'react';
-import { type ComplianceLog } from '../types';
-import { checkRange } from '../utils/rangeUtils';
+import React, { useState, useEffect } from 'react';
+import { type ComplianceLog, type LogValue } from '../types';
+import { Icon } from '../../../../common/icons/Icon';
+import { isCompliant } from '../utils/rangeUtils'; 
 
 interface ComplianceLogItemProps {
   log: ComplianceLog;
-  onUpdate: (logId: string, value: number, action?: string) => void;
+  updateLogValue: (id: string, value: number, isCompliant: boolean) => void;
 }
 
-const ThermometerIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-        <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="none" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 13.918V6.643a1 1 0 01.4-.8l3-3a1 1 0 011.2 1.6l-3 3V14a1 1 0 01-.6.918l-3 1.5a1 1 0 01-1.2-.4l-1.5-3a1 1 0 01.4-1.2l1.5-1.5z" transform="translate(1, 1)" />
-    </svg>
-);
-
-
-const ComplianceLogItem: React.FC<ComplianceLogItemProps> = ({ log, onUpdate }) => {
-  const [currentValue, setCurrentValue] = useState<string>('');
-  const [isOutOfRange, setIsOutOfRange] = useState(false);
-  const [showActions, setShowActions] = useState(false);
+export const ComplianceLogItem: React.FC<ComplianceLogItemProps> = ({ log, updateLogValue }) => {
+  const [localValue, setLocalValue] = useState<string>('');
+  const [compliant, setCompliant] = useState<boolean | null>(null);
 
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setCurrentValue(value);
-    
-    const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      const inRange = checkRange(numValue, log.range);
-      setIsOutOfRange(!inRange);
-      setShowActions(!inRange);
-    } else {
-        setIsOutOfRange(false);
-        setShowActions(false);
+    const newValueString = e.target.value;
+    setLocalValue(newValueString);
+
+    if (newValueString === '') {
+        setCompliant(null);
+        updateLogValue(log.id, NaN, false); 
+        return;
     }
+
+    const newValue = parseFloat(newValueString);
+    if (isNaN(newValue)) return;
+
+    const isValueCompliant = isCompliant(newValue, log.range);
+    setCompliant(isValueCompliant);
+    updateLogValue(log.id, newValue, isValueCompliant);
   };
 
-  const handleAction = (action: string) => {
-    onUpdate(log.id, parseFloat(currentValue), action);
-    setShowActions(false);
-  };
-  
-  let borderColor = 'border-gray-300';
-  if (isOutOfRange) borderColor = 'border-amber-500 ring-2 ring-amber-200';
+  const icon = compliant === true
+    ? <Icon.Check className="text-green-500" />
+    : compliant === false
+    ? <Icon.Warning className="text-red-500" />
+    : null;
+
+  const borderColor = compliant === true
+    ? 'border-green-500'
+    : compliant === false
+    ? 'border-red-500'
+    : 'border-gray-300';
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4 transition-shadow hover:shadow-xl">
-      <div className="flex items-center gap-4">
-        <div className="flex-shrink-0">
-          <ThermometerIcon/>
+    <div className={`p-4 border rounded-lg ${borderColor}`}>
+        <div className="flex items-center justify-between">
+            <div className="font-bold">{log.item}</div>
+            <div className="text-sm text-gray-500">Rango: {log.range}</div>
         </div>
-        <div className="flex-grow">
-          <h3 className="font-bold text-gray-800">{log.item}</h3>
-          <p className="text-sm text-gray-500">
-            Rango: <span className="font-semibold text-gray-700">{log.range}</span> | 
-            Lectura Anterior: <span className="font-semibold text-gray-700">{log.previousValue}{log.unit}</span>
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center mt-2">
             <input
                 type="number"
-                step="0.1"
-                placeholder="Actual"
-                value={currentValue}
+                value={localValue}
                 onChange={handleValueChange}
-                className={`w-28 p-2 text-lg text-right border rounded-md transition-all duration-300 ${borderColor}`}
+                className="w-full p-2 border-t-0 border-x-0 border-b-2 focus:ring-0 focus:border-blue-500 transition"
+                placeholder={`Valor en ${log.unit}`}
             />
-            <span className="text-lg font-semibold text-gray-600">{log.unit}</span>
+            {icon}
         </div>
-      </div>
-      {showActions && (
-          <div className="mt-4 pt-3 border-t border-amber-200 bg-amber-50 rounded-b-lg p-3">
-              <p className="text-sm font-semibold text-amber-800 mb-2">Valor fuera de rango. ¿Qué acción se tomó?</p>
-              <div className="flex gap-2 flex-wrap">
-                  <button onClick={() => handleAction('Notificar a supervisor')} className="px-3 py-1 text-xs font-semibold text-white bg-blue-500 rounded-full hover:bg-blue-600 active:scale-95">Notificar a supervisor</button>
-                  <button onClick={() => handleAction('Realizar ajuste')} className="px-3 py-1 text-xs font-semibold text-white bg-green-500 rounded-full hover:bg-green-600 active:scale-95">Realizar ajuste</button>
-                  <button onClick={() => handleAction('Marcar para mantenimiento')} className="px-3 py-1 text-xs font-semibold text-white bg-orange-500 rounded-full hover:bg-orange-600 active:scale-95">Marcar para mantenimiento</button>
-              </div>
-          </div>
-      )}
     </div>
   );
 };
-
-export default ComplianceLogItem;
