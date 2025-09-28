@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { type ComplianceLog, type LogValue } from '../types';
-import { Icon } from '../../../../common/icons/Icon';
+import { Icon } from '../../../common/icons/Icon';
 import { isCompliant } from '../utils/rangeUtils'; 
 
 interface ComplianceLogItemProps {
