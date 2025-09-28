@@ -40,11 +40,14 @@ export interface Factura {
   ordenDeCompraId?: string;
 }
 
-export enum RolUsuario {
-  PROVEEDOR = 'Proveedor',
-  VALIDADOR_GLOSA = 'Validador Glosa',
-  VALIDADOR_PRESUPUESTO = 'Validador Presupuesto', // This syntax is not allowed when 'erasableSyntaxOnly' is enabled.
-}
+export const ROL_USUARIO_VALUES = {
+  PROVEEDOR: 'Proveedor',
+  VALIDADOR_GLOSA: 'Validador Glosa',
+  VALIDADOR_PRESUPUESTO: 'Validador Presupuesto',
+} as const;
+
+export type RolUsuario = typeof ROL_USUARIO_VALUES[keyof typeof ROL_USUARIO_VALUES];
+
 
 export interface Usuario {
   id: string;
