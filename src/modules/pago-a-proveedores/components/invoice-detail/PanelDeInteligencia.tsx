@@ -2,7 +2,7 @@
 import React from 'react';
 import { Factura, EstadoFactura } from '../../types';
 import { Button } from '../common/Button';
-import { XCircleIcon, CheckCircleIcon, InformationCircleIcon, CalendarDaysIcon } from '../icons/Icon';
+import Icon from '../../../../common/icons/Icon';
 
 interface PanelDeInteligenciaProps {
   factura: Factura;

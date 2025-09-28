@@ -85,7 +85,7 @@ export const FacturaDetailView: React.FC<FacturaDetailViewProps> = ({
                 <li key={index} className="flex space-x-3">
                   <div className="flex-shrink-0">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${item.etapa === EstadoFactura.RECHAZADA ? 'bg-red-500' : 'bg-green-500'}`}>
-                      {item.etapa === EstadoFactura.RECHAZADA ? <XIcon className="w-5 h-5 text-white" /> : <Icon.Check className="w-5 h-5 text-white" />}
+                      {item.etapa === EstadoFactura.RECHAZADA ? <XIcon className="w-5 h-5 text-white" /> : <CheckIcon className="w-5 h-5 text-white" />}
                     </div>
                   </div>
                   <div>
