@@ -285,7 +285,7 @@ const App: React.FC = () => {
           <div className="mb-6 w-full md:w-1/2">
             <div className="group relative flex items-center w-full bg-white rounded-lg focus-within:ring-2 focus-within:ring-violet-500 transition-all duration-200 ease-in-out shadow-sm">
                 <div className="pl-4 pointer-events-none">
-                  <SearchIcon className="h-5 w-5 text-slate-500 group-focus-within:text-violet-500 transition-colors duration-200 ease-in-out" />
+                  <Icon.Search className="h-5 w-5 text-slate-500 group-focus-within:text-violet-500 transition-colors duration-200 ease-in-out" />
                 </div>
                 <input
                   type="search"
