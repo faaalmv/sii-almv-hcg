@@ -4,7 +4,7 @@ import { Factura, Usuario, EstadoFactura, OrdenDeCompra } from '../types';
 import { MOTIVOS_RECHAZO_COMUNES } from '../constants';
 import { Button } from './common/Button';
 import Modal from '../../../common/Modal';
-import { CheckIcon, XIcon, ClockIcon } from './icons/Icon';
+import Icon from '../../../common/icons/Icon';
 import { ModuloReconciliacionOC } from './invoice-detail/ModuloReconciliacionOC';
 
 interface FacturaDetailViewProps {
@@ -85,7 +85,7 @@ export const FacturaDetailView: React.FC<FacturaDetailViewProps> = ({
                 <li key={index} className="flex space-x-3">
                   <div className="flex-shrink-0">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${item.etapa === EstadoFactura.RECHAZADA ? 'bg-red-500' : 'bg-green-500'}`}>
-                      {item.etapa === EstadoFactura.RECHAZADA ? <XIcon className="w-5 h-5 text-white" /> : <CheckIcon className="w-5 h-5 text-white" />}
+                      {item.etapa === EstadoFactura.RECHAZADA ? <Icon.X className="w-5 h-5 text-white" /> : <Icon.Check className="w-5 h-5 text-white" />}
                     </div>
                   </div>
                   <div>
@@ -102,7 +102,7 @@ export const FacturaDetailView: React.FC<FacturaDetailViewProps> = ({
                <li className="flex space-x-3">
                   <div className="flex-shrink-0">
                     <div className="w-8 h-8 rounded-full flex items-center justify-center bg-blue-500 animate-pulse">
-                      <ClockIcon className="w-5 h-5 text-white" />
+                      <Icon.Clock className="w-5 h-5 text-white" />
                     </div>
                   </div>
                   <div>

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Factura, Usuario, OrdenDeCompra } from '../types';
 import { FacturasDashboard } from './FacturasDashboard';
 import { Button } from './common/Button';
-import { Modal } from './common/Modal';
+import Modal from '../../../common/Modal';
 import { FacturaUploader } from './FacturaUploader';
 import Icon from '../../../common/icons/Icon';
 

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { OrdenDeCompra } from '../../types';
-import { Modal } from '../common/Modal';
+import Modal from '../../../../common/Modal';
 import { Button } from '../common/Button';
 import { LinkIcon } from '../icons/Icon';
 
