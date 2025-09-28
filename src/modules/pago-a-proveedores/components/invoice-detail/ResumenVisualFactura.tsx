@@ -29,7 +29,7 @@ export const ResumenVisualFactura: React.FC<ResumenVisualFacturaProps> = ({ fact
         <div>
           <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Emisor</h4>
           <div className="flex items-start space-x-3">
-            <BuildingOfficeIcon className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
+            <Icon.BuildingOffice className="w-5 h-5 text-gray-400 mt-1 flex-shrink-0" />
             <div>
               <p className="font-semibold text-gray-800">{factura.razonSocial}</p>
               <p className="text-sm text-gray-600">{factura.rfc}</p>
