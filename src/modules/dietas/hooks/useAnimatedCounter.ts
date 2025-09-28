@@ -40,11 +40,5 @@ export const useAnimatedCounter = (endValue: number, duration: number = 1000) =>
     };
   }, [endValue, duration]);
   
-  // Directly set if initial value is already correct
-  useEffect(() => {
-    setCount(endValue);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return count;
 };

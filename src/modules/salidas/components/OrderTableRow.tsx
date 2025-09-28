@@ -162,7 +162,7 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
             }
         }
         
-        updateItem(item.id, { cantidadPedida: finalValue });
+        updateItem(item.id, { cantidadPedida: Number(finalValue) });
     };
 
     const handleCantidadSurtidaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -185,7 +185,7 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
         const finalNumericValue = parseInt(finalValue, 10);
         const words = isNaN(finalNumericValue) ? '' : convertNumberToWords(finalNumericValue);
         updateItem(item.id, {
-            cantidadSurtida: finalValue,
+            cantidadSurtida: Number(finalValue),
             observaciones: words,
         });
     };

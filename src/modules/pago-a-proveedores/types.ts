@@ -40,13 +40,13 @@ export interface Factura {
   ordenDeCompraId?: string;
 }
 
-export const ROL_USUARIO_VALUES = {
+export const RolUsuario = {
   PROVEEDOR: 'Proveedor',
   VALIDADOR_GLOSA: 'Validador Glosa',
   VALIDADOR_PRESUPUESTO: 'Validador Presupuesto',
 } as const;
 
-export type RolUsuario = typeof ROL_USUARIO_VALUES[keyof typeof ROL_USUARIO_VALUES];
+export type RolUsuario = typeof RolUsuario[keyof typeof RolUsuario];
 
 
 export interface Usuario {

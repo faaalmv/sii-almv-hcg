@@ -1,5 +1,5 @@
 
-import { Factura, EstadoFactura, Usuario, RolUsuario, OrdenDeCompra } from './types';
+import { Factura, EstadoFactura, Usuario, RolUsuario as RolUsuarioType, OrdenDeCompra, RolUsuario } from './types';
 
 export const ESTADOS_FACTURA_ORDEN: EstadoFactura[] = [
   EstadoFactura.RECEPCION,

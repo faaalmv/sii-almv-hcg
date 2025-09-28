@@ -21,9 +21,6 @@ const CalculadoraPenalizacion: React.FC<CalculadoraPenalizacionProps> = ({ incid
 
     useEffect(() => {
         if (isApplied) return;
-        // Fix: Cannot find namespace 'NodeJS'. Use a browser-compatible type for setTimeout's return value.
-        const timers: ReturnType<typeof setTimeout>[] = [];
-        if (step < 3) {
             timers.push(setTimeout(() => setStep(prev => prev + 1), 500));
         }
         return () => timers.forEach(clearTimeout);

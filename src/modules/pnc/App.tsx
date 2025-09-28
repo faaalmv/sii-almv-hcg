@@ -88,7 +88,7 @@ const SectionHeader: FC<{ title: string; className?: string }> = ({ title, class
 );
 
 const App: FC = () => {
-  const [formData, setFormData] = useState<FormData>(getInitialState);
+  const [formData, setFormData] = useState<FormData>(initialState);
   const [isPerishable, setIsPerishable] = useState(false);
   const [selectedNorma, setSelectedNorma] = useState('');
   

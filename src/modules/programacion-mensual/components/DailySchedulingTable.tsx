@@ -127,6 +127,8 @@ const GroupHeader: React.FC<GroupHeaderProps> = memo(({ name, items, isExpanded,
       style={{ backgroundColor, color: '#F8F9FA', borderBottom: isExpanded ? `1px solid rgba(0, 0, 0, 0.2)` : 'none' }}
       onClick={() => onToggle(name)}
       aria-expanded={isExpanded}
+      role="button"
+      tabIndex={0}
     >
       <td colSpan={100} className="p-0">
         <div className="flex items-center justify-between w-full p-3">
