@@ -26,11 +26,6 @@ const groupColorMap: Record<string, string> = {
   'GRUPO: OTROS': '#636e72',
 };
 
-const DailyTableHeader: React.FC<{ onFocusDay: (day: number) => void; onBlurDay: () => void; isScrolled: boolean }> = ({ onFocusDay, onBlurDay, isScrolled }) => {
-  const baseClasses = "border-b border-r border-gray-200 text-xs font-medium uppercase tracking-wider";
-  const headerRow1Classes = "text-slate-600 bg-gray-50/95 backdrop-blur-sm";
-  const headerRow2Classes = "text-slate-500 bg-gray-50/95 backdrop-blur-sm";
-  const summaryClasses = "text-blue-800 bg-blue-50/95 backdrop-blur-sm hover:bg-blue-100";
 const baseHeaderClasses = "border-b border-r border-gray-200 text-xs font-medium uppercase tracking-wider";
 const headerRow1Classes = "text-slate-600 bg-gray-50/95 backdrop-blur-sm";
 const headerRow2Classes = "text-slate-500 bg-gray-50/95 backdrop-blur-sm";
@@ -38,9 +33,6 @@ const summaryClasses = "text-blue-800 bg-blue-50/95 backdrop-blur-sm hover:bg-bl
 const stickyTop0 = "sticky top-0 z-20";
 const stickyTop48 = "sticky top-[48px] z-20";
 
-  // Per directive, th elements need to be sticky
-  const stickyTop0 = "sticky top-0 z-20";
-  const stickyTop48 = "sticky top-[48px] z-20";
 const colCodigoClasses = `${baseHeaderClasses} ${headerRow1Classes} ${stickyTop0} px-6 text-left left-0 w-32 z-30 py-4`;
 const colDescripcionClasses = `${baseHeaderClasses} ${headerRow1Classes} ${stickyTop0} px-6 text-left left-[128px] w-64 z-30 py-4`;
 const colUnidadClasses = `${baseHeaderClasses} ${headerRow1Classes} ${stickyTop0} px-6 text-center left-[384px] w-28 z-30 py-4 transition-shadow duration-200`;
@@ -53,15 +45,12 @@ const DailyTableHeader: React.FC<{ onFocusDay: (day: number) => void; onBlurDay:
     <thead>
       <tr className="h-[48px]">
         {/* Fixed columns with rowspan */}
-        <th scope="col" rowSpan={2} className={`${baseClasses} ${headerRow1Classes} ${stickyTop0} px-6 text-left left-0 w-32 z-30 py-4`}>
         <th scope="col" rowSpan={2} className={colCodigoClasses}>
           Código
         </th>
-        <th scope="col" rowSpan={2} className={`${baseClasses} ${headerRow1Classes} ${stickyTop0} px-6 text-left left-[128px] w-64 z-30 py-4`}>
         <th scope="col" rowSpan={2} className={colDescripcionClasses}>
           Descripción
         </th>
-        <th scope="col" rowSpan={2} className={`${baseClasses} ${headerRow1Classes} ${stickyTop0} px-6 text-center left-[384px] w-28 z-30 py-4 transition-shadow duration-200 ${isScrolled ? 'sticky-col-shadow' : ''}`}>
         <th scope="col" rowSpan={2} className={`${colUnidadClasses} ${isScrolled ? 'sticky-col-shadow' : ''}`}>
           Unidad
         </th>
@@ -72,7 +61,6 @@ const DailyTableHeader: React.FC<{ onFocusDay: (day: number) => void; onBlurDay:
             key={day} 
             scope="colgroup" 
             colSpan={3} 
-            className={`${baseClasses} ${headerRow1Classes} ${stickyTop0} px-3 text-center`}
             className={`${baseHeaderClasses} ${headerRow1Classes} ${stickyTop0} px-3 text-center`}
             onMouseEnter={() => onFocusDay(day)}
             onMouseLeave={onBlurDay}
@@ -136,8 +124,6 @@ const GroupHeader: React.FC<GroupHeaderProps> = memo(({ name, items, isExpanded,
   return (
     <tr
       className={`row-transition cursor-pointer group hover:z-20 focus-within:z-20 hover:scale-[1.01] focus-within:scale-[1.01] hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-lg focus-within:shadow-lg ${isExpanded ? 'sticky top-[85px] z-10' : ''}`}
-      role="button"
-      tabIndex={0}
       style={{ backgroundColor, color: '#F8F9FA', borderBottom: isExpanded ? `1px solid rgba(0, 0, 0, 0.2)` : 'none' }}
       onClick={() => onToggle(name)}
       aria-expanded={isExpanded}

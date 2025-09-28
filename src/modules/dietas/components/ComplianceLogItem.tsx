@@ -6,7 +6,7 @@ import { isCompliant } from '../utils/rangeUtils';
 
 interface ComplianceLogItemProps {
   log: ComplianceLog;
-  updateLogValue: (id: string, value: number, isCompliant: boolean) => void;
+  updateLogValue: (id: string, value: number | null, isCompliant: boolean | null) => void;
 }
 
 export const ComplianceLogItem: React.FC<ComplianceLogItemProps> = ({ log, updateLogValue }) => {
@@ -18,8 +18,8 @@ export const ComplianceLogItem: React.FC<ComplianceLogItemProps> = ({ log, updat
     setLocalValue(newValueString);
 
     if (newValueString === '') {
-        setCompliant(null);
-        updateLogValue(log.id, NaN, false); 
+        setCompliant(null); 
+        updateLogValue(log.id, null, null);
         return;
     }
 
