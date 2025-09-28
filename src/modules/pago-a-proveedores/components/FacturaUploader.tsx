@@ -2,7 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { ExtractedCFDIData, Usuario, Factura, EstadoFactura } from '../types';
-import { CheckCircleIcon, XCircleIcon, UploadIcon } from './icons/Icon';
+import Icon from '../../../common/icons/Icon';
 import { Button } from './common/Button';
 
 interface FacturaUploaderProps {
@@ -125,7 +125,7 @@ export const FacturaUploader: React.FC<FacturaUploaderProps> = ({ onUploadSucces
       >
         <input {...getInputProps()} />
         <div className="flex flex-col items-center">
-          <UploadIcon className="w-12 h-12 text-gray-400" />
+          <Icon.Upload className="w-12 h-12 text-gray-400" />
           <p className="mt-2 text-gray-600">
             {isDragActive ? 'Suelta los archivos aquí...' : 'Arrastra y suelta tus archivos XML y PDF, o haz clic para seleccionar.'}
           </p>
