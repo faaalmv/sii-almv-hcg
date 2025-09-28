@@ -118,7 +118,7 @@ export const FacturaDetailView: React.FC<FacturaDetailViewProps> = ({
           <div className="pt-6 border-t flex space-x-4">
             {nextStatus && (
                 <Button onClick={() => onApprove(factura.id, nextStatus)} variant="success">
-                    <span className="flex items-center space-x-2"><Icon.Check className="w-5 h-5"/> <span>Aprobar</span></span>
+                    <span className="flex items-center space-x-2"><CheckIcon className="w-5 h-5"/> <span>Aprobar</span></span>
                 </Button>
             )}
             <Button onClick={() => setIsRejectModalOpen(true)} variant="danger">

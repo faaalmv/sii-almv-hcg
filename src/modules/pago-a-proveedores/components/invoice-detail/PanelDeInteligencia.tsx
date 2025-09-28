@@ -37,7 +37,7 @@ const PanelRechazado: React.FC<{ factura: Factura }> = ({ factura }) => {
 const PanelAprobado: React.FC<{ factura: Factura }> = ({ factura }) => (
   <div className="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 rounded-r-lg" role="status">
     <div className="flex items-start">
-      <CheckCircleIcon className="w-6 h-6 mr-3 flex-shrink-0" />
+      <Icon.CheckCircle className="w-6 h-6 mr-3 flex-shrink-0" />
       <div>
         <h4 className="font-bold text-lg">Aprobada para Pago</h4>
         <p className="text-md mt-1">
