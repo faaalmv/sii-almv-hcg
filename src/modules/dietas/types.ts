@@ -1,4 +1,5 @@
 
+// Exportación directa de tipos e interfaces
 export interface Diet {
   id: string;
   name: string;
@@ -34,11 +35,14 @@ export interface KitchenProduction {
   count: number;
 }
 
-export enum ComplianceStatus {
-  InRange = "IN_RANGE",
-  OutOfRange = "OUT_OF_RANGE",
-  ActionTaken = "ACTION_TAKEN",
-}
+// Usar as const con type para mantener compatibilidad con erasableSyntaxOnly
+export const ComplianceStatus = {
+  InRange: "IN_RANGE",
+  OutOfRange: "OUT_OF_RANGE",
+  ActionTaken: "ACTION_TAKEN",
+} as const;
+
+export type ComplianceStatus = typeof ComplianceStatus[keyof typeof ComplianceStatus];
 
 export interface ComplianceLog {
   id: string;
