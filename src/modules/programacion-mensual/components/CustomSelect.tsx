@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { ChevronDownIcon } from './icons';
+import Icon from '../../../common/icons/Icon';
 
 interface CustomSelectOption {
   value: string;
@@ -99,7 +99,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ label, options, value, onCh
         aria-labelledby={`${id}-label ${id}`}
       >
         <span className="font-medium truncate">{selectedOption?.label || ''}</span>
-        <ChevronDownIcon className={`h-5 w-5 text-slate-600 transition-transform duration-200 ease-in-out ${isOpen ? 'transform rotate-180' : ''}`} />
+        <Icon.ChevronDown className={`h-5 w-5 text-slate-600 transition-transform duration-200 ease-in-out ${isOpen ? 'transform rotate-180' : ''}`} />
       </button>
 
       {isOpen && (

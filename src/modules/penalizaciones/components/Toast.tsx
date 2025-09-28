@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { CheckCircleIcon, XIcon } from './Icons';
+import Icon from '../../../common/icons/Icon';
 
 interface ToastProps {
   message: string;
@@ -24,7 +24,7 @@ const Toast: React.FC<ToastProps> = ({ message, onClose }) => {
         <div className="p-4">
           <div className="flex items-start">
             <div className="flex-shrink-0">
-              <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
+              <Icon.CheckCircle className="h-6 w-6 text-green-400" aria-hidden="true" />
             </div>
             <div className="ml-3 w-0 flex-1 pt-0.5">
               <p className="text-sm font-medium text-gray-900">{message}</p>
@@ -35,7 +35,7 @@ const Toast: React.FC<ToastProps> = ({ message, onClose }) => {
                 onClick={onClose}
               >
                 <span className="sr-only">Close</span>
-                <XIcon className="h-5 w-5" aria-hidden="true" />
+                <Icon.X className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
           </div>

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { HitoDeEntrega, MilestoneStatus } from '../types';
-import { CheckCircleIcon, ClockIcon, AlertTriangleIcon, PlusCircleIcon } from './Icons';
+import Icon from '../../../common/icons/Icon';
 
 interface TimelineHitosProps {
   hitos: HitoDeEntrega[];
@@ -11,11 +11,11 @@ interface TimelineHitosProps {
 const getStatusInfo = (status: MilestoneStatus) => {
   switch (status) {
     case MilestoneStatus.Cumplido:
-      return { Icon: CheckCircleIcon, color: 'text-green-500', bgColor: 'bg-green-500' };
+      return { Icon: Icon.CheckCircle, color: 'text-green-500', bgColor: 'bg-green-500' };
     case MilestoneStatus.Atrasado:
-      return { Icon: ClockIcon, color: 'text-orange-500', bgColor: 'bg-orange-500' };
+      return { Icon: Icon.Clock, color: 'text-orange-500', bgColor: 'bg-orange-500' };
     case MilestoneStatus.Incumplido:
-      return { Icon: AlertTriangleIcon, color: 'text-red-500', bgColor: 'bg-red-500' };
+      return { Icon: Icon.AlertTriangle, color: 'text-red-500', bgColor: 'bg-red-500' };
     case MilestoneStatus.Pendiente:
     default:
       return { Icon: null, color: 'text-gray-400', bgColor: 'bg-gray-400' };
@@ -57,7 +57,7 @@ const TimelineHitos: React.FC<TimelineHitosProps> = ({ hitos, onRegisterIncidenc
                         onClick={() => onRegisterIncidence(hito)}
                         className="flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors group whitespace-nowrap"
                       >
-                        <PlusCircleIcon className="h-5 w-5 mr-1 text-blue-500 group-hover:text-blue-700" />
+                        <Icon.PlusCircle className="h-5 w-5 mr-1 text-blue-500 group-hover:text-blue-700" />
                         <span>Registrar Incidencia</span>
                       </button>
                     )}
