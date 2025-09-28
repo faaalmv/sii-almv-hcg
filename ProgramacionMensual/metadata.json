@@ -1,0 +1,5 @@
+{
+  "name": "Modulo. Programaciones Mensuales",
+  "description": "A web application to replicate a monthly scheduling table for articles. Users can fill in daily quantities, which are automatically summed up and compared against a maximum quantity for each article.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Formatos. Control de Producto No Conforme",
+  "description": "Una aplicación para llenar y gestionar formularios de control de productos no conformes, optimizada para la exportación a PDF.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Hospital Order Form",
+  "description": "A dynamic and interactive web application that replicates the 'Pedido al Almacen' form for the Hospital Civil de Guadalajara. Users can add items from a predefined list, specify quantities, and fill out required header and signature information, mirroring the functionality of the original PDF document.",
+  "requestFramePermissions": []
+}
