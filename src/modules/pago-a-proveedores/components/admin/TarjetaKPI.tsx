@@ -19,11 +19,12 @@ const colorClasses = {
 export const TarjetaKPI: React.FC<TarjetaKPIProps> = ({ title, value, icon, color, formatAsCurrency = false, onClick }) => {
   const [displayValue, setDisplayValue] = useState(0);
 
+  const animationDuration = 1000; // 1 second
+  const frameRate = 60; // 60 fps
+  const totalFrames = animationDuration / (1000 / frameRate);
+  const increment = value / totalFrames;
+
   useEffect(() => {
-    const animationDuration = 1000; // 1 second
-    const frameRate = 60; // 60 fps
-    const totalFrames = animationDuration / (1000 / frameRate);
-    const increment = value / totalFrames;
     let currentFrame = 0;
 
     const timer = setInterval(() => {
@@ -38,7 +39,7 @@ export const TarjetaKPI: React.FC<TarjetaKPIProps> = ({ title, value, icon, colo
     }, 1000 / frameRate);
 
     return () => clearInterval(timer);
-  }, [value]);
+  }, [value, increment]);
 
   const formatValue = (val: number) => {
     if (formatAsCurrency) {

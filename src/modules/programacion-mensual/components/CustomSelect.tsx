@@ -140,4 +140,4 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ label, options, value, onCh
   );
 };
 
-export default CustomSelect;
+export default React.memo(CustomSelect);

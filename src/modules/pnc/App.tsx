@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, FC } from 'react';
 import { FormData, ActionItem } from './types';
 import Logo from './components/Logo';
 import { purchaseOrdersData } from './data';
@@ -81,14 +81,14 @@ type CriterioOption = {
   principio: string;
 };
 
-const SectionHeader: React.FC<{ title: string; className?: string }> = ({ title, className }) => (
+const SectionHeader: FC<{ title: string; className?: string }> = ({ title, className }) => (
     <div className={`col-span-12 mt-4 bg-slate-700 text-white p-2 text-base font-bold rounded-t-md ${className}`}>
       {title}
     </div>
 );
 
-const App: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>(initialState);
+const App: FC = () => {
+  const [formData, setFormData] = useState<FormData>(getInitialState);
   const [isPerishable, setIsPerishable] = useState(false);
   const [selectedNorma, setSelectedNorma] = useState('');
   
