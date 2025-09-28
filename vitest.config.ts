@@ -1,9 +1,13 @@
-import { defineConfig } from 'vitest/config';
 import { mergeConfig } from 'vite';
+import type { UserConfigFn } from 'vite';
+import { defineConfig } from 'vitest/config';
 import viteConfig from './vite.config';
 
+// Resolve the function-based Vite config before merging
+const viteConfigObject = (viteConfig as UserConfigFn)({ command: 'serve', mode: 'test' });
+
 export default mergeConfig(
-  viteConfig,
+  viteConfigObject,
   defineConfig({
     test: {
       globals: true,
