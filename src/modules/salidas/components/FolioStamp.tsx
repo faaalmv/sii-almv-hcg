@@ -9,7 +9,7 @@ const formatFolioNumber = (num: number) => `F.R.A. ${String(num).padStart(7, '0'
     
 const formatTimestamp = (date: Date): string => {
     const day = String(date.getDate()).padStart(2, '0');
-    const month = date.toLocaleString('es-ES', { month: 'short' }).toUpperCase().replace('.', '');
+    const month = date.toLocaleString('es-MX', { month: 'short' }).toUpperCase().replace('.', '');
     const year = String(date.getFullYear()).slice(-2);
     
     let hours = date.getHours();

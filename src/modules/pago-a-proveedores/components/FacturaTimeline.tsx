@@ -23,25 +23,11 @@ const Tooltip: React.FC<{ message: string; children: React.ReactNode }> = ({ mes
   );
 };
 
-const borderColorMap: { [key: string]: string } = {
-  green: 'border-green-500',
-  gray: 'border-gray-500',
-  blue: 'border-blue-500',
-  red: 'border-red-500',
-};
-
-const bgColorMap: { [key: string]: string } = {
-  green: 'bg-green-100',
-  gray: 'bg-gray-100',
-  blue: 'bg-blue-100',
-  red: 'bg-red-100',
-};
-
-const textColorMap: { [key: string]: string } = {
-  green: 'text-green-600',
-  gray: 'text-gray-600',
-  blue: 'text-blue-600',
-  red: 'text-red-600',
+const colorClassMap: { [key: string]: { border: string; bg: string; text: string } } = {
+  green: { border: 'border-green-500', bg: 'bg-green-100', text: 'text-green-600' },
+  gray: { border: 'border-gray-500', bg: 'bg-gray-100', text: 'text-gray-600' },
+  blue: { border: 'border-blue-500', bg: 'bg-blue-100', text: 'text-blue-600' },
+  red: { border: 'border-red-500', bg: 'bg-red-100', text: 'text-red-600' },
 };
 
 const lineColorMap: { [key: string]: string } = {
@@ -84,7 +70,8 @@ export const FacturaTimeline: React.FC<FacturaTimelineProps> = ({ factura }) => 
   return (
     <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto py-2">
       {ESTADOS_FACTURA_ORDEN.map((etapa, index) => {
-        const { isCompleted, isCurrent, color } = getStatusInfo(etapa);
+        const { isCompleted, isCurrent, color: colorKey } = getStatusInfo(etapa);
+        const classes = colorClassMap[colorKey] || colorClassMap.gray;
         const nextEtapaInfo = index < ESTADOS_FACTURA_ORDEN.length - 1 ? getStatusInfo(ESTADOS_FACTURA_ORDEN[index + 1]) : { isCompleted: false };
         const lineColor = nextEtapaInfo.isCompleted || isCompleted ? 'green' : 'gray';
 
@@ -92,9 +79,9 @@ export const FacturaTimeline: React.FC<FacturaTimelineProps> = ({ factura }) => 
           <React.Fragment key={etapa}>
             <div className="flex flex-col items-center">
               <div
-                className={`w-6 h-6 rounded-full flex items-center justify-center border-2 ${borderColorMap[color]} ${bgColorMap[color]}`}
+                className={`w-6 h-6 rounded-full flex items-center justify-center border-2 ${classes.border} ${classes.bg}`}
               >
-                {isCompleted && <Icon.CheckCircle className={`w-5 h-5 ${textColorMap[color]}`} />}
+                {isCompleted && <Icon.CheckCircle className={`w-5 h-5 ${classes.text}`} />}
                 {isCurrent && <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>}
               </div>
               <p className={`mt-1 text-xs text-center text-gray-600 ${isCurrent ? 'font-bold text-blue-700' : ''}`}>{etapa}</p>

@@ -18,13 +18,13 @@ const STATUS_COLORS: { [key in EstadoFactura]: string } = {
   [EstadoFactura.RECHAZADA]: '#EF4444', // red-500
 };
 
-const Tooltip: React.FC<{ data: ChartData | null; position: { x: number; y: number } }> = ({ data, position }) => {
+const Tooltip: React.FC<{ data: ChartData | null; position: { x: number; y: number }; parentRef: React.RefObject<HTMLDivElement> }> = ({ data, position, parentRef }) => {
   if (!data) return null;
+  const parentRect = parentRef.current?.getBoundingClientRect();
+  const left = position.x - (parentRect?.left ?? 0) + 15;
+  const top = position.y - (parentRect?.top ?? 0) + 15;
   return (
-    <div
-      className="absolute bg-gray-800 text-white text-sm rounded-md p-2 shadow-lg pointer-events-none transition-transform transform"
-      style={{ left: position.x + 15, top: position.y + 15 }}
-    >
+    <div className="absolute bg-gray-800 text-white text-sm rounded-md p-2 shadow-lg pointer-events-none transition-transform transform" style={{ left, top }}>
       <p className="font-bold">{data.status}</p>
       <p>{data.count} Facturas ({data.percentage.toFixed(1)}%)</p>
     </div>
@@ -34,6 +34,7 @@ const Tooltip: React.FC<{ data: ChartData | null; position: { x: number; y: numb
 const GraficoDeEstadosComponent: React.FC<{ facturas: Factura[] }> = ({ facturas }) => {
   const [hoveredSegment, setHoveredSegment] = useState<ChartData | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+  const chartContainerRef = React.useRef<HTMLDivElement>(null);
 
   const chartData = useMemo<ChartData[]>(() => {
     const counts = facturas.reduce((acc, f) => {
@@ -61,7 +62,7 @@ const GraficoDeEstadosComponent: React.FC<{ facturas: Factura[] }> = ({ facturas
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md border border-gray-200 p-4" onMouseMove={handleMouseMove}>
+    <div ref={chartContainerRef} className="bg-white rounded-lg shadow-md border border-gray-200 p-4 relative" onMouseMove={handleMouseMove}>
       <h3 className="text-xl font-semibold text-gray-800 mb-4">Facturas por Estado</h3>
       {facturas.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
@@ -117,7 +118,7 @@ const GraficoDeEstadosComponent: React.FC<{ facturas: Factura[] }> = ({ facturas
       ) : (
         <div className="text-center py-10 text-gray-500">No hay datos de facturas para mostrar.</div>
       )}
-      <Tooltip data={hoveredSegment} position={tooltipPosition} />
+      <Tooltip data={hoveredSegment} position={tooltipPosition} parentRef={chartContainerRef} />
     </div>
   );
 };

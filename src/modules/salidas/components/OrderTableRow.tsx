@@ -56,33 +56,6 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
         setInputValue(item.descripcion);
     }, [item.descripcion]);
 
-     useEffect(() => {
-        const calculatePosition = () => {
-            if (cellRef.current) {
-                const rect = cellRef.current.getBoundingClientRect();
-                setDropdownStyle({
-                    position: 'absolute',
-                    top: `${rect.bottom + window.scrollY}px`,
-                    left: `${rect.left + window.scrollX}px`,
-                    width: `${rect.width}px`,
-                    zIndex: 1000, // High z-index to be on top of everything
-                });
-            }
-        };
-
-        if (isDropdownVisible) {
-            calculatePosition();
-            window.addEventListener('resize', calculatePosition);
-            // Use capture true to catch scroll events on any element
-            window.addEventListener('scroll', calculatePosition, true);
-        }
-
-        return () => {
-            window.removeEventListener('resize', calculatePosition);
-            window.removeEventListener('scroll', calculatePosition, true);
-        };
-    }, [isDropdownVisible]);
-
     const sortedItems = useMemo(() =>
         [...itemsData].sort((a, b) => a.descripcion.localeCompare(b.descripcion)), 
     []);
@@ -106,9 +79,9 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
             updateItem(item.id, {
                 codigo: '',
                 descripcion: '',
-                um: '',
-                cantidadPedida: '',
-                cantidadSurtida: '',
+                um: '', // @ts-ignore
+                cantidadPedida: '', // @ts-ignore
+                cantidadSurtida: '', // @ts-ignore
                 observaciones: '',
             });
         }
@@ -120,8 +93,8 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
             codigo: selectedItem.codigo.toString(),
             descripcion: selectedItem.descripcion,
             um: selectedItem.um,
-            cantidadPedida: '', // Reset quantities on new item selection
-            cantidadSurtida: '',
+            cantidadPedida: 0, // Reset quantities on new item selection
+            cantidadSurtida: 0,
             observaciones: '',
         });
     };
@@ -142,14 +115,14 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
         if (quantityError) setQuantityError('');
         
         if (value === '') {
-            updateItem(item.id, { cantidadPedida: '' });
+            updateItem(item.id, { cantidadPedida: 0 });
             return;
         }
     
         const numericValue = parseInt(value, 10);
     
         if (numericValue <= 0) {
-            updateItem(item.id, { cantidadPedida: '' }); // Clear if 0 or less
+            updateItem(item.id, { cantidadPedida: 0 }); // Clear if 0 or less
             return;
         }
         
@@ -167,10 +140,10 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
 
     const handleCantidadSurtidaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.replace(/[^0-9]/g, ''); // Sanitize
-        const cantidadPedida = parseInt(item.cantidadPedida, 10) || 0;
+        const cantidadPedida = item.cantidadPedida || 0;
     
         if (value === '') {
-            updateItem(item.id, { cantidadSurtida: '', observaciones: '' });
+            updateItem(item.id, { cantidadSurtida: 0, observaciones: '' });
             return;
         }
     
@@ -197,10 +170,10 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
 
         e.preventDefault();
 
-        const surtida = parseInt(item.cantidadSurtida, 10);
-        const pedida = parseInt(item.cantidadPedida, 10);
+        const surtida = item.cantidadSurtida;
+        const pedida = item.cantidadPedida;
 
-        if (item.cantidadSurtida.trim() === '' || isNaN(surtida) || isNaN(pedida)) {
+        if (!surtida || !pedida) {
             return;
         }
 
@@ -256,7 +229,7 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
     };
 
     const handleRemoveItem = () => {
-        const hasData = item.codigo || item.cantidadPedida || item.cantidadSurtida || item.observaciones;
+        const hasData = item.codigo || item.cantidadPedida > 0 || item.cantidadSurtida > 0 || item.observaciones;
         if (hasData) {
             if (window.confirm('¿Estás seguro que deseas eliminar esta fila?')) {
                 removeItem(item.id);
@@ -267,28 +240,28 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
     };
     
     const isSaveDisabled = !selectedReason || (selectedReason === 'Otro' && !otherReasonText.trim());
+    
+    const dropdownMenu = isDropdownVisible && (
+        <div ref={cellRef} className="absolute z-50 mt-1 w-full rounded-md bg-white shadow-lg max-h-60 overflow-auto">
+            <ul className="py-1">
+                {filteredItems.length > 0 ? (
+                    filteredItems.map(dataItem => (
+                        <li
+                            key={dataItem.codigo}
+                            onMouseDown={() => handleItemSelect(dataItem)}
+                            className="px-3 py-2 cursor-pointer hover:bg-blue-100 text-sm whitespace-normal"
+                        >
+                            {dataItem.descripcion}
+                        </li>
+                    ))
+                ) : (
+                    <li className="px-3 py-2 text-gray-500 text-sm">No se encontraron artículos</li>
+                )}
+            </ul>
+        </div>
+    );
 
-    const dropdownMenu = isDropdownVisible ? ReactDOM.createPortal(
-        <ul
-            className="bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-y-auto"
-            style={dropdownStyle}
-        >
-            {filteredItems.length > 0 ? (
-                filteredItems.map(dataItem => (
-                    <li
-                        key={dataItem.codigo}
-                        onMouseDown={() => handleItemSelect(dataItem)}
-                        className="px-3 py-2 cursor-pointer hover:bg-blue-100 text-sm whitespace-normal"
-                    >
-                        {dataItem.descripcion}
-                    </li>
-                ))
-            ) : (
-                <li className="px-3 py-2 text-gray-500 text-sm">No se encontraron artículos</li>
-            )}
-        </ul>,
-        document.body
-    ) : null;
+
 
 
   return (
@@ -305,7 +278,9 @@ const OrderTableRow: React.FC<OrderTableRowProps> = ({ item, updateItem, removeI
             className="w-full h-full border-none focus:ring-2 focus:ring-blue-400 focus:ring-inset rounded-md bg-transparent text-sm p-3"
             placeholder="Buscar artículo..."
             autoComplete="off"
-            />
+            /> {isDropdownVisible && <div className="absolute top-full left-0 w-full z-50">
+                {dropdownMenu}
+            </div>}
             {dropdownMenu}
         </td>
         <td className="px-4 py-2 text-center align-middle whitespace-nowrap text-gray-600 border-r border-gray-200">{item.um}</td>

@@ -123,7 +123,7 @@ const GroupHeader: React.FC<GroupHeaderProps> = memo(({ name, items, isExpanded,
 
   return (
     <tr
-      className={`row-transition cursor-pointer group hover:z-20 focus-within:z-20 hover:scale-[1.01] focus-within:scale-[1.01] hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-lg focus-within:shadow-lg ${isExpanded ? 'sticky top-[85px] z-10' : ''}`}
+      className={`row-transition cursor-pointer group hover:z-20 focus-within:z-20 hover:scale-[1.01] focus-within:scale-[1.01] hover:-translate-y-1 focus-within:-translate-y-1 hover:shadow-lg focus-within:shadow-lg`}
       style={{ backgroundColor, color: '#F8F9FA', borderBottom: isExpanded ? `1px solid rgba(0, 0, 0, 0.2)` : 'none' }}
       onClick={() => onToggle(name)}
       aria-expanded={isExpanded}

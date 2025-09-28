@@ -45,7 +45,7 @@ const DietPrescriptionModal: React.FC<DietPrescriptionModalProps> = ({ patient, 
     }
 
     setConflict(null);
-  }, [selectedDietId, patient, diets]);
+  }, [selectedDietId, patient.allergies, patient.medications, diets]);
 
   const handleSave = () => {
     if (conflict) return;
